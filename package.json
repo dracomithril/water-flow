@@ -3,14 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "material-ui": "^1.0.0-beta.47",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "typeface-roboto": "^0.0.54"
   },
   "scripts": {
+    "lint": "eslint \"**/*.@(js|jsx)\"",
+    "format": "npm run lint -- --fix",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-json": "^1.2.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "flow-bin": "^0.72.0",
+    "prettier": "^1.12.1",
+    "storybook": "^1.0.0"
   }
 }
