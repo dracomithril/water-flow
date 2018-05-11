@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import CssBaseline from 'material-ui/CssBaseline';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import logo from './logo.svg';
 import './App.css';
+
+const theme = createMuiTheme();
 
 class App extends Component {
   state = {};
   render() {
     return (
-      <React.Fragment>
+      <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <div className="App">
           <header className="App-header">
@@ -18,7 +21,7 @@ class App extends Component {
             To get started, edit <code>src/App.js</code> and save to reload.
           </p>
         </div>
-      </React.Fragment>
+      </MuiThemeProvider>
     );
   }
 }
