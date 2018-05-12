@@ -9,6 +9,12 @@
     core-js "^2.5.3"
     regenerator-runtime "^0.11.1"
 
+"@material-ui/icons@^1.0.0-beta.43":
+  version "1.0.0-beta.43"
+  resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-1.0.0-beta.43.tgz#38bba799a4e575de7eced4bd10a0afbd546e9b47"
+  dependencies:
+    recompose "^0.26.0"
+
 "@storybook/codemod@^3.2.6":
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/@storybook/codemod/-/codemod-3.4.3.tgz#cdea33568fa5338baf7ad08cccca0e6839df8d04"
@@ -6751,6 +6757,15 @@ rechoir@^0.6.2:
   resolved "https://registry.yarnpkg.com/rechoir/-/rechoir-0.6.2.tgz#85204b54dba82d5742e28c96756ef43af50e3384"
   dependencies:
     resolve "^1.1.6"
+
+recompose@^0.26.0:
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/recompose/-/recompose-0.26.0.tgz#9babff039cb72ba5bd17366d55d7232fbdfb2d30"
+  dependencies:
+    change-emitter "^0.1.2"
+    fbjs "^0.8.1"
+    hoist-non-react-statics "^2.3.1"
+    symbol-observable "^1.0.4"
 
 "recompose@^0.26.0 || ^0.27.0":
   version "0.27.0"
