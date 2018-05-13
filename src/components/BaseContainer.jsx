@@ -11,6 +11,9 @@ import Hidden from 'material-ui/Hidden';
 import Divider from 'material-ui/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import InfoIcon from '@material-ui/icons/Info';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
+import About from './About';
+import Footer from './Footer';
 
 const drawerWidth = 240;
 
@@ -46,33 +49,62 @@ const styles = theme => ({
     padding: theme.spacing.unit * 3,
   },
 });
+const menuOptions = [
+  {
+    name: 'Calculate',
+    icon: (
+      <ListItemIcon>
+        <EqualizerIcon />
+      </ListItemIcon>
+    ),
+    page: <Typography noWrap>You think water moves fast? You should see ice.</Typography>,
+  },
+  {
+    name: 'About',
+    icon: (
+      <ListItemIcon>
+        <InfoIcon />
+      </ListItemIcon>
+    ),
+    page: <About />,
+  },
+];
 
 class BaseContainer extends Component {
   state = {
     mobileOpen: false,
+    selectedMenu: menuOptions[0].name,
   };
 
   handleDrawerToggle = () => {
     this.setState({ mobileOpen: !this.state.mobileOpen });
   };
+  handleMenuClick = value => {
+    this.setState({ selectedMenu: value });
+  };
 
   render() {
     const { classes, theme } = this.props;
-
+    const menuItems = menuOptions.map(elem => (
+      <ListItem
+        key={elem.name}
+        button
+        onClick={() => {
+          this.handleMenuClick(elem.name);
+        }}
+      >
+        {elem.icon}
+        <ListItemText primary={elem.name} />
+      </ListItem>
+    ));
     const drawer = (
-      <div>
+      <React.Fragment>
         <div className={classes.toolbar} />
         <Divider />
-        <List>
-          <ListItem button>
-            <ListItemIcon>
-              <InfoIcon />
-            </ListItemIcon>
-            <ListItemText primary="About" />
-          </ListItem>
-        </List>
+        <List>{menuItems}</List>
         <Divider />
-      </div>
+        <Footer />
+      </React.Fragment>
     );
 
     return (
@@ -121,7 +153,7 @@ class BaseContainer extends Component {
         </Hidden>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Typography noWrap>You think water moves fast? You should see ice.</Typography>
+          {menuOptions.find(elem => elem.name === this.state.selectedMenu).page}
         </main>
       </div>
     );
