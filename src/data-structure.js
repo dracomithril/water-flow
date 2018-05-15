@@ -1,11 +1,24 @@
 // @flow
-export function createWaterFlowObject(name: string, type: string, coldWater: number = 0, warmWater: number = 0) {
+export function createWaterFlowObject(type: string, name: string, coldWater: number = 0, warmWater: number = 0) {
   const cold = coldWater;
   const warm = warmWater;
+  const sourceType = type;
+  const sourceName = name;
   let deviceCount = 0;
+  let useWarmWater = true;
   return {
-    name,
-    type,
+    get type() {
+      return sourceType;
+    },
+    set useWarmWater(value: boolean) {
+      useWarmWater = value;
+    },
+    get useWarmWaterNormativeFlow() {
+      return useWarmWater;
+    },
+    get name() {
+      return sourceName;
+    },
     set deviceCount(value: number) {
       deviceCount = value;
     },
@@ -19,7 +32,8 @@ export function createWaterFlowObject(name: string, type: string, coldWater: num
       return warm;
     },
     get flowSum() {
-      return (cold + warm) * deviceCount;
+      const normativeWaterFlow = useWarmWater ? cold + warm : cold;
+      return normativeWaterFlow * deviceCount;
     },
   };
 }
@@ -49,5 +63,5 @@ const types = {
 export default () => {
   const valveArray = vale.map(elem => createWaterFlowObject(types.dredgeValve, ...elem));
   const batteryArray = battery.map(elem => createWaterFlowObject(types.dredgeValve, ...elem));
-  return [...valveArray, ...batteryArray];
+  return { drawOffPoints: [...valveArray, ...batteryArray] };
 };

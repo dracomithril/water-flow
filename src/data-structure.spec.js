@@ -20,6 +20,19 @@ describe('[data-structure]', () => {
   });
   it('should create init structure', () => {
     const structure = initStructure();
-    expect(structure).toHaveLength(13);
+    expect(structure.drawOffPoints).toHaveLength(13);
+  });
+  it('should not be able to change type, name, coldWater, warmWater', () => {
+    const waterFlow = createWaterFlowObject('type', 'random', 1, 2);
+    expect(() => {
+      waterFlow.cold = 10;
+    }).toThrow();
+    expect(() => {
+      waterFlow.warm = 10;
+    }).toThrow();
+    expect(() => {
+      waterFlow.type = 'something else';
+      expect(waterFlow.name).toEqual('random');
+    }).toThrow();
   });
 });

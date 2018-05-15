@@ -7,6 +7,7 @@
     "@fortawesome/fontawesome-free-brands": "^5.0.13",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@fortawesome/react-fontawesome": "^0.0.19",
+    "@material-ui/core": "^1.0.0-rc.0",
     "@material-ui/icons": "^1.0.0-beta.43",
     "material-ui": "^1.0.0-beta.47",
     "prop-types": "^15.6.1",
@@ -21,7 +22,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "babel": {
     "presets": [
@@ -30,6 +33,11 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.3.15",
+    "@storybook/addon-links": "^3.3.15",
+    "@storybook/addon-viewport": "^3.3.15",
+    "@storybook/addons": "^3.3.15",
+    "@storybook/react": "^3.4.4",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-json": "^1.2.0",
